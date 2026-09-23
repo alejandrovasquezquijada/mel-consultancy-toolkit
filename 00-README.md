@@ -35,7 +35,3 @@ The prompts work with any general-purpose assistant (ChatGPT, Claude, Copilot, G
 1. Work with documents only: ToRs, proposals, deliverables, methodology sections and aggregated figures. Do not paste raw beneficiary-level data or anything that identifies a person.
 2. Check your organization's policy on which AI tools are approved for internal documents before you paste them.
 3. The assistant produces a first pass. Selection, sign-off and any decision about scope, budget or people stay with your team.
-
-## About the Case
-
-The Meridian evaluation preloaded in the calculator (Tool 11) is a composite case built from patterns seen across real engagements. It does not describe any real program, country or client.
