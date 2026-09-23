@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Timeline Feasibility Calculator | Datimpacto MEL Toolkit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --plum:#6a2b84; --violet:#9d4dcf; --orchid:#c87fd7; --mist:#f6f3fa; --line:#e4ddf0;
+  --ink:#2e2433; --muted:#6b6b6b; --bg:#ffffff; --card:#ffffff;
+  --ok:#2f7d5b; --warn:#b7791f; --bad:#b83a4b;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#f1ebf5; --muted:#b9adc2; --bg:#1b1420; --card:#241a2b; --mist:#2d2135; --line:#43334f;
+    --plum:#d9a6ec; --violet:#c38be0; --orchid:#9d4dcf; --ok:#6fcf9f; --warn:#f0b75a; --bad:#f08a98;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#f1ebf5; --muted:#b9adc2; --bg:#1b1420; --card:#241a2b; --mist:#2d2135; --line:#43334f;
+  --plum:#d9a6ec; --violet:#c38be0; --orchid:#9d4dcf; --ok:#6fcf9f; --warn:#f0b75a; --bad:#f08a98;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Poppins,"Segoe UI",Helvetica,Arial,sans-serif;font-size:15px;line-height:1.55}
+.wrap{max-width:980px;margin:0 auto;padding:32px 20px 56px}
+header{border-left:6px solid var(--violet);padding-left:16px;margin-bottom:28px}
+header p.org{margin:0;color:var(--muted);font-size:13px}
+h1{margin:4px 0 6px;font-size:clamp(24px,4vw,34px);line-height:1.15;color:var(--plum);font-weight:700}
+header p.lede{margin:0;max-width:62ch;color:var(--ink)}
+.grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:820px){.grid{grid-template-columns:1fr}}
+section.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 18px 20px}
+h2{font-size:17px;margin:0 0 4px;color:var(--plum);font-weight:600}
+.hint{margin:0 0 14px;color:var(--muted);font-size:13px}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 14px}
+label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:500}
+input[type=number],input[type=text]{font:inherit;font-size:14px;padding:7px 9px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);width:100%}
+input:focus-visible,button:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+.tablewrap{overflow-x:auto;margin-top:6px}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:13px}
+th{text-align:left;font-weight:600;color:var(--muted);padding:6px 6px;border-bottom:1px solid var(--line)}
+td{padding:5px 6px;border-bottom:1px solid var(--line)}
+td input{padding:5px 6px}
+td.total{font-weight:600;white-space:nowrap}
+button{font:inherit;font-size:13px;cursor:pointer;border-radius:6px}
+.add{margin-top:10px;background:transparent;border:1px dashed var(--violet);color:var(--plum);padding:7px 12px}
+.del{background:transparent;border:none;color:var(--muted);padding:4px 8px;font-size:16px}
+.del:hover{color:var(--bad)}
+.stack{display:flex;flex-direction:column;gap:24px}
+.verdict{border-radius:10px;padding:18px;background:var(--mist);border:1px solid var(--line)}
+.verdict .big{font-size:40px;font-weight:700;line-height:1;color:var(--plum)}
+.verdict .big small{font-size:16px;font-weight:500;color:var(--muted)}
+.verdict .status{display:inline-block;margin-top:12px;font-weight:600;padding:4px 10px;border-radius:999px;font-size:13px}
+.status.ok{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}
+.status.warn{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}
+.status.bad{background:color-mix(in srgb,var(--bad) 16%,transparent);color:var(--bad)}
+.verdict p{margin:10px 0 0;font-size:14px}
+.bar{position:relative;height:30px;border-radius:6px;overflow:hidden;background:var(--line);display:flex;margin:14px 0 6px}
+.bar span{height:100%}
+.limit{position:relative;height:18px;font-size:11px;color:var(--muted)}
+.limit i{position:absolute;top:-38px;bottom:14px;width:2px;background:var(--ink)}
+.limit b{position:absolute;top:0;font-weight:500;transform:translateX(-50%);white-space:nowrap}
+.legend{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:4px;font-size:13px}
+.legend li{display:flex;justify-content:space-between;gap:10px}
+.legend .sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:8px;vertical-align:middle}
+.teams{font-size:13px;margin-top:12px;color:var(--muted)}
+footer{margin-top:28px;font-size:12px;color:var(--muted);max-width:70ch}
+@media print{.add,.del{display:none} body{font-size:12px} section.panel{break-inside:avoid}}
+@media (prefers-reduced-motion:no-preference){.bar span{transition:flex-basis .25s ease}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <p class="org">Datimpacto · MEL Community of Practice Toolkit · Tool 11</p>
+  <h1>Timeline Feasibility Calculator</h1>
+  <p class="lede">Does the work your ToR asks for fit inside the window it allows? Enter the phases and the field activities per site. The example loaded below is the Meridian case: five regions in three months.</p>
+</header>
+
+<div class="grid">
+  <div class="stack">
+    <section class="panel">
+      <h2>Window and assumptions</h2>
+      <p class="hint">Weeks are calendar weeks. Field days are working days.</p>
+      <div class="fields">
+        <label>Window in the ToR (months)<input type="number" id="window" min="0" step="0.5" value="3"></label>
+        <label>Working days per week<input type="number" id="wdays" min="1" max="7" step="1" value="5"></label>
+        <label>Field teams working at the same time<input type="number" id="teams" min="1" step="1" value="5"></label>
+        <label>Contingency for delays (%)<input type="number" id="buffer" min="0" step="5" value="15"></label>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Phases outside fieldwork (weeks)</h2>
+      <p class="hint">Include time the commissioning team needs to review each product.</p>
+      <div class="fields">
+        <label>Inception and inception report review<input type="number" class="ph" id="inception" min="0" step="0.5" value="3"></label>
+        <label>Tool design, piloting and ethics<input type="number" class="ph" id="tools" min="0" step="0.5" value="2"></label>
+        <label>Analysis<input type="number" class="ph" id="analysis" min="0" step="0.5" value="3"></label>
+        <label>Report drafting<input type="number" class="ph" id="drafting" min="0" step="0.5" value="3"></label>
+        <label>Review rounds (number)<input type="number" id="rounds" min="0" step="1" value="2"></label>
+        <label>Weeks per review round<input type="number" id="roundweeks" min="0" step="0.5" value="1"></label>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Field activities per site (working days)</h2>
+      <p class="hint">One row per country, region or site. Travel covers moving in and out and setup.</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Site</th><th>Travel and setup</th><th>Training</th><th>Data collection</th><th>Validation</th><th>Total</th><th><span class="sr" aria-label="Remove"></span></th></tr></thead>
+          <tbody id="sites"></tbody>
+        </table>
+      </div>
+      <button class="add" id="addSite" type="button">Add a site</button>
+    </section>
+  </div>
+
+  <section class="panel" aria-live="polite">
+    <h2>Result</h2>
+    <div class="verdict">
+      <div class="big" id="needed">0 <small>weeks needed</small></div>
+      <p id="available"></p>
+      <span class="status" id="status"></span>
+      <p id="message"></p>
+    </div>
+    <div class="bar" id="bar" aria-hidden="true"></div>
+    <div class="limit" id="limit"></div>
+    <ul class="legend" id="legend"></ul>
+    <p class="teams" id="teamload"></p>
+  </section>
+</div>
+
+<footer>How the fieldwork estimate works: sites are assigned to teams, longest first, and fieldwork lasts as long as the busiest team. With one team, sites run one after another. The contingency is added on top of the total. This is a planning estimate; permits, seasons, holidays and security conditions in your context can change it.</footer>
+</div>
+
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const WEEKS_PER_MONTH = 52/12;
+  const defaults = [
+    ["Region 1",2,3,12,2],["Region 2",2,3,12,2],["Region 3",2,3,12,2],["Region 4",2,3,12,2],["Region 5",2,3,12,2]
+  ];
+  const tbody = $("sites");
+  function num(v){const n=parseFloat(v);return isFinite(n)&&n>0?n:0}
+  function addRow(d){
+    d = d || ["Site " + (tbody.children.length+1),2,3,10,2];
+    const tr=document.createElement("tr");
+    tr.innerHTML = '<td><input type="text" aria-label="Site name"></td>' +
+      [1,2,3,4].map(()=>'<td><input type="number" min="0" step="1"></td>').join("") +
+      '<td class="total"></td><td><button class="del" type="button" aria-label="Remove site">×</button></td>';
+    const ins=tr.querySelectorAll("input");
+    ins.forEach((el,i)=>{el.value=d[i]; el.addEventListener("input",calc)});
+    tr.querySelector(".del").addEventListener("click",()=>{tr.remove();calc()});
+    tbody.appendChild(tr);
+  }
+  function fmt(x){return (Math.round(x*10)/10).toString()}
+  function calc(){
+    const wdays = Math.max(1,num($("wdays").value)||5);
+    const teams = Math.max(1,Math.round(num($("teams").value))||1);
+    const sites=[...tbody.children].map(tr=>{
+      const v=[...tr.querySelectorAll("input")].map(i=>i.value);
+      const t=num(v[1])+num(v[2])+num(v[3])+num(v[4]);
+      tr.querySelector(".total").textContent = t + " d";
+      return {name:v[0]||"Site",days:t};
+    });
+    const loads = Array.from({length:teams},()=>({days:0,sites:[]}));
+    [...sites].sort((a,b)=>b.days-a.days).forEach(s=>{
+      loads.sort((a,b)=>a.days-b.days); loads[0].days+=s.days; loads[0].sites.push(s.name);
+    });
+    const fieldDays = Math.max(0,...loads.map(l=>l.days));
+    const phases = [
+      ["Inception",num($("inception").value),"#6a2b84"],
+      ["Tools and ethics",num($("tools").value),"#8a3aa8"],
+      ["Fieldwork",fieldDays/wdays,"#9d4dcf"],
+      ["Analysis",num($("analysis").value),"#b366d6"],
+      ["Drafting",num($("drafting").value),"#c87fd7"],
+      ["Review rounds",num($("rounds").value)*num($("roundweeks").value),"#dcaee6"]
+    ];
+    const base = phases.reduce((s,p)=>s+p[1],0);
+    const bufW = base*num($("buffer").value)/100;
+    const all = phases.concat([["Contingency",bufW,"repeating-linear-gradient(45deg,#e4ddf0 0 6px,#f6f3fa 6px 12px)"]]);
+    const needed = base+bufW;
+    const avail = num($("window").value)*WEEKS_PER_MONTH;
+
+    $("needed").innerHTML = fmt(needed) + " <small>weeks needed</small>";
+    $("available").textContent = "Window allows " + fmt(avail) + " weeks (" + fmt(num($("window").value)) + " months). Estimate equals " + fmt(needed/WEEKS_PER_MONTH) + " months.";
+    const st=$("status"), msg=$("message");
+    if(needed<=avail){st.className="status ok";st.textContent="Fits";msg.textContent="The plan fits, including the contingency of " + fmt(bufW) + " weeks.";}
+    else if(base<=avail){st.className="status warn";st.textContent="Tight";msg.textContent="The work fits only if nothing goes wrong. Any delay will eat into the final date. Consider adding time or reducing scope.";}
+    else {st.className="status bad";st.textContent="Does not fit";msg.textContent="Even without contingency the plan needs " + fmt(base-avail) + " more weeks than the window allows. Add time, add field teams, or reduce sites or activities.";}
+
+    const scale = Math.max(needed,avail)||1;
+    $("bar").innerHTML = all.map(p=>'<span style="flex:0 0 '+(p[1]/scale*100)+'%;background:'+p[2]+'" title="'+p[0]+': '+fmt(p[1])+' weeks"></span>').join("");
+    const pos = avail/scale*100;
+    $("limit").innerHTML = '<i style="left:'+pos+'%"></i><b style="left:'+Math.min(Math.max(pos,12),88)+'%">ToR window</b>';
+    $("legend").innerHTML = all.map(p=>'<li><span><span class="sw" style="background:'+p[2]+'"></span>'+p[0]+'</span><span>'+fmt(p[1])+' wk</span></li>').join("");
+    const used = loads.filter(l=>l.sites.length);
+    $("teamload").textContent = used.length ? "Busiest team: " + fieldDays + " working days (" + used.sort((a,b)=>b.days-a.days)[0].sites.join(", ") + ")." : "Add at least one site.";
+  }
+  defaults.forEach(addRow);
+  $("addSite").addEventListener("click",()=>{addRow();calc()});
+  document.querySelectorAll(".panel input").forEach(el=>el.addEventListener("input",calc));
+  calc();
+})();
+</script>
+</body>
+</html>
