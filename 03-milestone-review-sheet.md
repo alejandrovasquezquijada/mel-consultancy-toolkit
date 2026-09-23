@@ -50,9 +50,9 @@ When to use: when an inception report, progress update or preliminary findings a
 
 ### What You Need
 
-- The ToR questions or requirements and timeline.
-- The interim product (inception report, progress report, preliminary findings or draft component).
-- Aggregated quality figures if relevant: completed work vs target by site or workstream, response rates, share of missing data or unresolved items on key variables or components.
+- The ToR, attached.
+- The interim product, attached (inception report, progress report, preliminary findings or draft component).
+- Aggregated quality figures if relevant, attached or pasted as a small table: completed work vs target by site or workstream, response rates, share of missing data or unresolved items on key variables or components.
 
 Data note: use aggregated figures and report text only. Do not paste datasets or anything at the level of individual beneficiaries.
 
@@ -63,12 +63,13 @@ You are a commissioning manager preparing for a milestone review of an
 external consultancy. Your job is to answer one question: does this interim
 product still answer our questions or requirements, on the timeline we agreed?
 
-Milestone: [e.g. inception report / implementation midpoint / preliminary findings]
+Read the attached ToR to extract the priority questions or requirements and
+the agreed timeline. Read the attached interim product for everything else,
+and identify which milestone it corresponds to (inception, implementation
+midpoint, preliminary findings, or other) unless stated otherwise here:
+[MILESTONE, optional, e.g. implementation midpoint]
 
-Questions or requirements and agreed timeline:
-[PASTE QUESTIONS OR REQUIREMENTS AND TIMELINE]
-
-Aggregated quality figures (if available):
+Aggregated quality figures (if available, attach the file or paste below):
 [PASTE TABLE, e.g. site or workstream | target | achieved | response rate | missing data or open items %]
 
 Task:
@@ -99,9 +100,6 @@ F. Questions for the provider
 Rules:
 - Reference the section or page of the interim product for each point.
 - If information needed for an assessment is missing, say so and list it under F.
-
-Interim product:
-[PASTE TEXT HERE]
 ```
 
 ### How to Read the Output

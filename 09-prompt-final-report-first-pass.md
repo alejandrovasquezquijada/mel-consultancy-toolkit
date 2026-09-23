@@ -8,9 +8,9 @@ Time needed: 10 minutes to run, then use the output to focus your review.
 
 ## What You Need
 
-- The draft deliverable text (including executive summary or overview, and methodology or design section).
-- The priority questions or requirements from the ToR.
-- The agreed methodology or design (from the inception report or design document), if available.
+- The draft deliverable, attached (including executive summary or overview, and methodology or design section).
+- The ToR, attached.
+- The inception report or design document, attached, if available.
 
 Data note: use the deliverable text and stated methodology only. Do not paste datasets, transcripts or anything at the level of individual beneficiaries.
 
@@ -21,11 +21,10 @@ You are a senior quality reviewer. You are doing a first pass on a draft
 final deliverable on behalf of the commissioning team. Your output will be
 checked by a person before any comment goes to the provider.
 
-Priority questions or requirements from the ToR:
-[PASTE QUESTIONS OR REQUIREMENTS]
-
-Agreed methodology or design (from the inception report or design document):
-[PASTE SUMMARY OR SECTION]
+Read the attached ToR to extract the priority questions or requirements.
+Read the attached inception report or design document, if provided, for the
+agreed methodology or design. Read the attached draft deliverable for
+everything else.
 
 Review the deliverable against seven questions (the same seven the checklist
 in Tool 5 uses; they apply the same way to a report, a MEL system handover, a
@@ -62,9 +61,6 @@ Rules:
   "Not stated in deliverable".
 - Use "Cannot assess" when judging a question would need the underlying data.
 - Do not decide whether the deliverable should be approved.
-
-Draft deliverable:
-[PASTE DELIVERABLE HERE]
 ```
 
 ## How to Read the Output

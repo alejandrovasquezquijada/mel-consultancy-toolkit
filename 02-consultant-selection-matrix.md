@@ -34,11 +34,11 @@ Converting cost to a score: a common approach is (lowest price / this bidder's p
 
 ## Scoring Sheet
 
-| Bidder | Stage 1 | Technical (×0.35) | Methodology (×0.35) | Cost (×0.30) | Total | Notes |
-|--------|---------|-------------------|---------------------|--------------|-------|-------|
-| A | Pass | | | | | |
-| B | Pass | | | | | |
-| C | Fail (no budget breakdown) | n/a | n/a | n/a | n/a | |
+| Bidder | Stage 1                    | Technical (×0.35) | Methodology (×0.35) | Cost (×0.30) | Total | Notes |
+| ------ | -------------------------- | ----------------- | ------------------- | ------------ | ----- | ----- |
+| A      | Pass                       |                   |                     |              |       |       |
+| B      | Pass                       |                   |                     |              |       |       |
+| C      | Fail (no budget breakdown) | n/a               | n/a                 | n/a          | n/a   |       |
 
 ## Stage 3. The Human Call
 
@@ -55,11 +55,11 @@ When to use: after the submission deadline, one proposal at a time, before Stage
 
 ### What You Need
 
-- The ToR, or at least its requirements, priority questions and timeline.
-- The exclusionary and weighted criteria from Stage 1 and Stage 2 above.
-- One proposal (technical proposal, workplan and budget).
+- The ToR, attached.
+- One proposal, attached (technical proposal, workplan and budget).
+- Your exclusionary criteria from Stage 1 above, if they are not stated in the ToR.
 
-Data note: proposals contain CVs and personal information. Check your procurement and data protection rules before using an AI tool. If in doubt, remove CVs and personal contact details and paste only the technical proposal, workplan and budget summary.
+Data note: proposals contain CVs and personal information. Check your procurement and data protection rules before using an AI tool. If in doubt, remove CVs and personal contact details from the attached proposal before uploading it.
 
 ### The Prompt
 
@@ -68,15 +68,16 @@ You are supporting a selection panel with a first-pass triage of a proposal
 for an external consultancy. You do not score, rank or recommend. You check
 facts against the criteria and flag issues for the panel.
 
-Exclusionary criteria (pass/fail):
+Read the attached ToR and extract the exclusionary criteria (pass/fail) and
+the priority questions or requirements and timeline. If the exclusionary
+criteria are not stated in the ToR, use these instead:
 [PASTE CRITERIA, e.g.
 1. Team lead has at least [NUMBER OF YEARS] years of relevant experience in [SECTOR OR SETTING]
 2. Team includes fluent speakers of [LANGUAGES]
 3. Team is available between [DATES]
 4. Submission includes technical proposal, itemized budget, CVs and 2 references]
 
-Priority questions or requirements and timeline from the ToR:
-[PASTE QUESTIONS OR REQUIREMENTS AND KEY DATES]
+Read the attached proposal for everything below.
 
 Task:
 1. For each exclusionary criterion, state Pass, Fail or Unclear, and quote or
@@ -103,9 +104,6 @@ Rules:
 - Base every statement on the proposal text. If something is not there, say
   "Not found in proposal".
 - Do not give an overall score, ranking or recommendation.
-
-Proposal:
-[PASTE PROPOSAL HERE]
 ```
 
 ### How to Read the Output

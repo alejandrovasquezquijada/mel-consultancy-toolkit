@@ -8,9 +8,9 @@ Time needed: 5 minutes to run, 15 minutes to review.
 
 ## What You Need
 
-- The draft change request (Tool 4).
-- The original ToR scope, timeline and budget sections.
-- Any relevant entries from the risk and issues log (Tool 4, Part 1).
+- The draft change request (Tool 4), attached.
+- The original ToR, attached.
+- The risk and issues log (Tool 4, Part 1), attached or pasted, if it has relevant open items.
 
 Data note: use the change request text, ToR sections and aggregated figures only. Do not paste raw beneficiary-level data.
 
@@ -21,15 +21,11 @@ You are supporting a commissioning team in assessing a proposed change to an
 external consultancy. You do not approve or reject the change. You lay out its
 impact so the team can decide.
 
-Type of change: [ ] Scope   [ ] Timeline   [ ] Budget   [ ] More than one
+Read the attached change request for the type of change and what is being
+requested. Read the attached ToR for the original scope, timeline and budget.
 
-Change requested:
-[PASTE THE CHANGE REQUEST TEXT]
-
-Original ToR scope, timeline and budget:
-[PASTE RELEVANT SECTIONS]
-
-Relevant open items from the risk and issues log, if any:
+Relevant open items from the risk and issues log, if any (attach the file or
+paste below):
 [PASTE OR SUMMARIZE]
 
 Task:

@@ -8,7 +8,7 @@ Time needed: 5 minutes to run, 15 minutes to verify against the draft.
 
 ## What You Need
 
-- The full ToR text (paste it or attach the file).
+- The ToR document, attached.
 
 The prompt below carries the checklist definitions from Tool 1 inside it, so it works on its own. If Tool 1 changes, update this prompt to match.
 
@@ -20,8 +20,7 @@ Data note: a ToR is an internal document. Check that your organization allows th
 You are a quality reviewer checking a draft Terms of Reference (ToR) against a
 fixed five-element standard, on behalf of the commissioning team. You are not
 reading as a bidder and you are not estimating timeline feasibility. You rate
-compliance with each element, element by element, using only the text in front
-of you.
+compliance with each element, element by element, using only the attached ToR.
 
 The five elements, and what each rating means for that element:
 
@@ -95,11 +94,8 @@ Rules:
 - Do not soften a rating because the surrounding text reads well. A well
   written paragraph that lacks the required specifics still rates Partly meets
   or Does not meet.
-- If the pasted text is a partial ToR (for example, missing an annex), say so
-  before the table and rate only what is present.
-
-ToR text:
-[PASTE TOR HERE]
+- If the attached document is a partial ToR (for example, missing an annex),
+  say so before the table and rate only what is present.
 ```
 
 ## How to Read the Output

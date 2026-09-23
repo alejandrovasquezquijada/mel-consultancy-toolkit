@@ -8,8 +8,8 @@ Time needed: 5 minutes to run, 20 minutes to review the output.
 
 ## What You Need
 
-- The full ToR text (paste it or attach the file).
-- The planned publication date and contract start date, if they are not in the ToR.
+- The ToR document, attached.
+- The planned publication date, if you have one and it is not already in the ToR.
 
 Data note: a ToR is an internal document. Check that your organization allows the AI tool you are using for internal documents. Remove names of individuals if your policy requires it.
 
@@ -20,10 +20,15 @@ You are an experienced external provider reviewing a Terms of Reference (ToR)
 before deciding whether to bid. Read it the way a careful bidder would: looking
 for what is missing, unclear or unrealistic.
 
-Context:
-- Organization commissioning the work: [ORGANIZATION TYPE, e.g. international NGO]
-- Type of engagement: [e.g. final performance evaluation, MEL system design, standalone data-collection exercise]
-- Expected contract start date: [DATE]
+Read the attached ToR and extract, before doing anything else:
+- Organization commissioning the work
+- Type of engagement (evaluation, MEL system design, data-collection exercise,
+  or other)
+- Expected contract start date
+If any of these is not stated in the document, write "Not stated" for it
+rather than guessing.
+
+Planned publication date, if not stated in the ToR and known: [DATE, optional]
 
 Review the ToR against these checks:
 1. Object and timing: is it clear what is being delivered (program, period,
@@ -58,8 +63,7 @@ Rules:
 - If the ToR does not mention something, say "Not stated" rather than guessing.
 - Do not rewrite the whole ToR. Point to specific fixes.
 
-ToR text:
-[PASTE TOR HERE]
+Use the attached ToR document as your source text.
 ```
 
 ## How to Read the Output
